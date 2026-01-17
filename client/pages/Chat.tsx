@@ -544,7 +544,7 @@ export default function Chat() {
                     const newHeight = Math.min(target.scrollHeight, 200);
                     target.style.height = `${newHeight}px`;
                   }}
-                  placeholder="Задайте ваш юридический вопрос..."
+                  placeholder="Жду Ваш вопрос..."
                   className="flex-1 px-5 py-3.5 rounded-2xl border-0 bg-secondary text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent text-base resize-none min-h-[56px] max-h-[200px] leading-relaxed chat-textarea"
                   disabled={loading || isStreaming}
                   autoFocus
