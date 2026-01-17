@@ -34,7 +34,7 @@ export default function Chat() {
       return;
     }
     setUser(JSON.parse(userData));
-    
+
     // Initialize with first new chat
     const newChat = createNewChat();
     setCurrentChatId(newChat.id);
@@ -51,7 +51,8 @@ export default function Chat() {
       messages: [
         {
           role: "assistant",
-          content: "Добро пожаловать в LegalAI! 👋 Я ваш персональный юридический консультант на основе ИИ. Как я могу вам помочь? Задайте любой юридический вопрос, и я предоставлю вам профессиональную консультацию.",
+          content:
+            "Добро пожаловать в LegalAI! 👋 Я ваш персональный юридический консультант на основе ИИ. Как я могу вам помочь? Задайте любой юридический вопрос, и я предоставлю вам профессиональную консультацию.",
         },
       ],
       createdAt: new Date(),
@@ -91,24 +92,27 @@ export default function Chat() {
     if (!input.trim() || !currentChatId) return;
 
     const userMessage = input;
-    
+
     setChatSessions((prev) =>
       prev.map((chat) => {
         if (chat.id === currentChatId) {
           const updatedChat = {
             ...chat,
-            messages: [...chat.messages, { role: "user" as const, content: userMessage }],
+            messages: [
+              ...chat.messages,
+              { role: "user" as const, content: userMessage },
+            ],
           };
-          
+
           // Auto-generate title from first user message
           if (chat.title === "Новый чат" && chat.messages.length === 1) {
             updatedChat.title = generateChatTitle(userMessage);
           }
-          
+
           return updatedChat;
         }
         return chat;
-      })
+      }),
     );
 
     setInput("");
@@ -124,19 +128,22 @@ export default function Chat() {
       ];
 
       const response = responses[Math.floor(Math.random() * responses.length)];
-      
+
       setChatSessions((prev) =>
         prev.map((chat) => {
           if (chat.id === currentChatId) {
             return {
               ...chat,
-              messages: [...chat.messages, { role: "assistant" as const, content: response }],
+              messages: [
+                ...chat.messages,
+                { role: "assistant" as const, content: response },
+              ],
             };
           }
           return chat;
-        })
+        }),
       );
-      
+
       setLoading(false);
     }, 800);
   };
@@ -164,7 +171,10 @@ export default function Chat() {
 
       {/* Sidebar - Mobile */}
       {showSidebar && (
-        <div className="fixed inset-0 z-40 bg-black/50 md:hidden" onClick={() => setShowSidebar(false)}>
+        <div
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          onClick={() => setShowSidebar(false)}
+        >
           <div onClick={(e) => e.stopPropagation()}>
             <ChatSidebar
               chatSessions={chatSessions}
@@ -179,7 +189,10 @@ export default function Chat() {
       )}
 
       {/* Settings Modal */}
-      <SettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <SettingsModal
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+      />
 
       {/* Main Chat Area */}
       <div className="flex-1 md:ml-64 flex flex-col">
@@ -189,7 +202,11 @@ export default function Chat() {
             onClick={() => setShowSidebar(!showSidebar)}
             className="p-2 hover:bg-secondary rounded-lg transition-colors"
           >
-            {showSidebar ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {showSidebar ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
           <span className="text-sm font-medium text-foreground truncate">
             {currentChat?.title || "LegalAI Chat"}
@@ -211,7 +228,9 @@ export default function Chat() {
                       : "bg-secondary text-secondary-foreground"
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap leading-relaxed">{message.content}</p>
+                  <p className="text-sm whitespace-pre-wrap leading-relaxed">
+                    {message.content}
+                  </p>
                 </div>
               </div>
             ))}
@@ -258,7 +277,8 @@ export default function Chat() {
                 </button>
               </div>
               <p className="text-xs text-muted-foreground text-center">
-                LegalAI может делать ошибки. Для важных решений проконсультируйтесь с адвокатом.
+                LegalAI может делать ошибки. Для важных решений
+                проконсультируйтесь с адвокатом.
               </p>
             </form>
           </div>

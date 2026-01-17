@@ -12,7 +12,8 @@ export const Footer = () => {
               <span>LegalAI</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Профессиональная платформа для юридических консультаций на основе ИИ.
+              Профессиональная платформа для юридических консультаций на основе
+              ИИ.
             </p>
           </div>
 
@@ -20,12 +21,18 @@ export const Footer = () => {
             <h3 className="font-semibold mb-4">Продукт</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#features" className="hover:text-foreground transition-colors">
+                <a
+                  href="#features"
+                  className="hover:text-foreground transition-colors"
+                >
                   Возможности
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="hover:text-foreground transition-colors">
+                <a
+                  href="#pricing"
+                  className="hover:text-foreground transition-colors"
+                >
                   Цены
                 </a>
               </li>

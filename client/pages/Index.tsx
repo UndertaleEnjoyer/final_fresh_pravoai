@@ -2,7 +2,15 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Zap, Lock, Briefcase, BarChart3, Users, MessageSquare, ChevronDown } from "lucide-react";
+import {
+  Zap,
+  Lock,
+  Briefcase,
+  BarChart3,
+  Users,
+  MessageSquare,
+  ChevronDown,
+} from "lucide-react";
 
 const FeatureIcon = ({ icon: Icon }: { icon: React.ReactNode }) => <>{Icon}</>;
 
@@ -13,17 +21,20 @@ export default function Index() {
     {
       icon: <Zap className="w-6 h-6 text-accent" />,
       title: "Мгновенные ответы",
-      description: "Получайте юридическую консультацию за секунды, доступно 24/7 для всех ваших вопросов.",
+      description:
+        "Получайте юридическую консультацию за секунды, доступно 24/7 для всех ваших вопросов.",
     },
     {
       icon: <Lock className="w-6 h-6 text-accent" />,
       title: "Конфиденциально и безопасно",
-      description: "Шифрование корпоративного уровня гарантирует конфиденциальность ваших данных и переписки.",
+      description:
+        "Шифрование корпоративного уровня гарантирует конфиденциальность ваших данных и переписки.",
     },
     {
       icon: <MessageSquare className="w-6 h-6 text-accent" />,
       title: "Юридическая экспертиза",
-      description: "Обучено на обширных юридических базах данных и судебной практике для точных рекомендаций.",
+      description:
+        "Обучено на обширных юридических базах данных и судебной практике для точных рекомендаций.",
     },
     {
       icon: <Briefcase className="w-6 h-6 text-accent" />,
@@ -33,12 +44,14 @@ export default function Index() {
     {
       icon: <BarChart3 className="w-6 h-6 text-accent" />,
       title: "Анализ документов",
-      description: "Загружайте контракты и документы для интеллектуального анализа и выводов.",
+      description:
+        "Загружайте контракты и документы для интеллектуального анализа и выводов.",
     },
     {
       icon: <Users className="w-6 h-6 text-accent" />,
       title: "Мультиюрисдикция",
-      description: "Охватывает различные правовые системы и юрисдикции по всему миру.",
+      description:
+        "Охватывает различные правовые системы и юрисдикции по всему миру.",
     },
   ];
 
@@ -46,22 +59,26 @@ export default function Index() {
     {
       number: "1",
       title: "Задайте вопрос",
-      description: "Введите ваш юридический вопрос на понятном языке, с необходимыми деталями.",
+      description:
+        "Введите ваш юридический вопрос на понятном языке, с необходимыми деталями.",
     },
     {
       number: "2",
       title: "Анализ ИИ",
-      description: "Наш продвинутый ИИ анализирует ваш вопрос с учетом правовых норм и судебной практики.",
+      description:
+        "Наш продвинутый ИИ анализирует ваш вопрос с учетом правовых норм и судебной практики.",
     },
     {
       number: "3",
       title: "Получите рекомендации",
-      description: "Получайте полную, действенную юридическую консультацию и рекомендации.",
+      description:
+        "Получайте полную, действенную юридическую консультацию и рекомендации.",
     },
     {
       number: "4",
       title: "Принимайте меры",
-      description: "Экспортируйте документы, поделитесь с адвокатом или действуйте с уверенностью.",
+      description:
+        "Экспортируйте документы, поделитесь с адвокатом или действуйте с уверенностью.",
     },
   ];
 
@@ -98,28 +115,35 @@ export default function Index() {
 
   const faqs = [
     {
-      question: "Может ли совет ИИ быть таким же хорошим, как у реального адвоката?",
-      answer: "LegalAI предоставляет быструю и точную информацию для большинства вопросов. Однако для критических решений рекомендуется проконсультироваться с квалифицированным адвокатом.",
+      question:
+        "Может ли совет ИИ быть таким же хорошим, как у реального адвоката?",
+      answer:
+        "LegalAI предоставляет быструю и точную информацию для большинства вопросов. Однако для критических решений рекомендуется проконсультироваться с квалифицированным адвокатом.",
     },
     {
       question: "Как защищены мои данные?",
-      answer: "Мы используем шифрование корпоративного уровня (256-бит AES) и соответствуем международным стандартам безопасности GDPR и ISO 27001.",
+      answer:
+        "Мы используем шифрование корпоративного уровня (256-бит AES) и соответствуем международным стандартам безопасности GDPR и ISO 27001.",
     },
     {
       question: "Какие юрисдикции охватываются?",
-      answer: "LegalAI охватывает правовые системы более 100 стран, включая России, США, ЕС и другие основные юрисдикции.",
+      answer:
+        "LegalAI охватывает правовые системы более 100 стран, включая России, США, ЕС и другие основные юрисдикции.",
     },
     {
       question: "Могу ли я скачать мои консультации?",
-      answer: "Да, вы можете экспортировать все консультации в PDF, Word или другие форматы для архивирования и обмена с адвокатом.",
+      answer:
+        "Да, вы можете экспортировать все консультации в PDF, Word или другие форматы для архивирования и обмена с адвокатом.",
     },
     {
       question: "Что если мне нужна поддержка человека?",
-      answer: "Все планы включают поддержку. Профессиональный план предоставляет приоритетную поддержку.",
+      answer:
+        "Все планы включают поддержку. Профессиональный план предоставляет приоритетную поддержку.",
     },
     {
       question: "Могу ли я интегрировать это с моими системами?",
-      answer: "Да, наш API позволяет легко интегрировать LegalAI с вашими системами управления или рабочими процессами.",
+      answer:
+        "Да, наш API позволяет легко интегрировать LegalAI с вашими системами управления или рабочими процессами.",
     },
   ];
 
@@ -135,7 +159,9 @@ export default function Index() {
               Профессиональная юридическая консультация, работающая на ИИ
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
-              Получайте мгновенную и точную юридическую консультацию для любой ситуации. Доступно 24/7, безопасно и надежно для тысяч профессионалов по всему миру.
+              Получайте мгновенную и точную юридическую консультацию для любой
+              ситуации. Доступно 24/7, безопасно и надежно для тысяч
+              профессионалов по всему миру.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
@@ -155,22 +181,33 @@ export default function Index() {
         <section className="mx-auto max-w-6xl px-4 md:px-8 py-10 md:py-12">
           <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
-              <p className="text-4xl md:text-5xl font-bold text-accent mb-2">50K+</p>
-              <p className="text-lg text-muted-foreground">Активных пользователей</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent mb-2">
+                50K+
+              </p>
+              <p className="text-lg text-muted-foreground">
+                Активных пользователей
+              </p>
             </div>
             <div className="text-center">
-              <p className="text-4xl md:text-5xl font-bold text-accent mb-2">1M+</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent mb-2">
+                1M+
+              </p>
               <p className="text-lg text-muted-foreground">Консультаций</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl md:text-5xl font-bold text-accent mb-2">99.9%</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent mb-2">
+                99.9%
+              </p>
               <p className="text-lg text-muted-foreground">Доступность</p>
             </div>
           </div>
         </section>
 
         {/* Features Section */}
-        <section id="features" className="mx-auto max-w-6xl px-4 md:px-8 py-12 md:py-16">
+        <section
+          id="features"
+          className="mx-auto max-w-6xl px-4 md:px-8 py-12 md:py-16"
+        >
           <div className="max-w-3xl mx-auto mb-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
               Мощные возможности
@@ -181,10 +218,17 @@ export default function Index() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {features.map((feature, index) => (
-              <div key={index} className="p-6 rounded-lg bg-card border border-border hover:border-accent transition-colors">
+              <div
+                key={index}
+                className="p-6 rounded-lg bg-card border border-border hover:border-accent transition-colors"
+              >
                 <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
@@ -208,8 +252,12 @@ export default function Index() {
                     {step.number}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-2">{step.title}</h3>
-                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                    <h3 className="font-semibold text-foreground mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {step.description}
+                    </p>
                   </div>
                 </div>
                 {index < steps.length - 1 && (
@@ -221,7 +269,10 @@ export default function Index() {
         </section>
 
         {/* Pricing Section */}
-        <section id="pricing" className="mx-auto max-w-6xl px-4 md:px-8 py-12 md:py-16">
+        <section
+          id="pricing"
+          className="mx-auto max-w-6xl px-4 md:px-8 py-12 md:py-16"
+        >
           <div className="max-w-3xl mx-auto mb-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
               Прозрачные цены
@@ -240,17 +291,29 @@ export default function Index() {
                     : "bg-card text-card-foreground border-border"
                 }`}
               >
-                <h3 className={`text-2xl font-bold mb-1 ${plan.featured ? "text-accent-foreground" : "text-foreground"}`}>
+                <h3
+                  className={`text-2xl font-bold mb-1 ${plan.featured ? "text-accent-foreground" : "text-foreground"}`}
+                >
                   {plan.name}
                 </h3>
-                <p className={`text-sm mb-6 ${plan.featured ? "text-accent-foreground/80" : "text-muted-foreground"}`}>
+                <p
+                  className={`text-sm mb-6 ${plan.featured ? "text-accent-foreground/80" : "text-muted-foreground"}`}
+                >
                   {plan.subtitle}
                 </p>
                 <div className="mb-6">
-                  <p className={`text-3xl font-bold ${plan.featured ? "text-accent-foreground" : "text-foreground"}`}>
+                  <p
+                    className={`text-3xl font-bold ${plan.featured ? "text-accent-foreground" : "text-foreground"}`}
+                  >
                     {plan.price}
                   </p>
-                  {plan.period && <p className={`text-sm ${plan.featured ? "text-accent-foreground/80" : "text-muted-foreground"}`}>{plan.period}</p>}
+                  {plan.period && (
+                    <p
+                      className={`text-sm ${plan.featured ? "text-accent-foreground/80" : "text-muted-foreground"}`}
+                    >
+                      {plan.period}
+                    </p>
+                  )}
                 </div>
                 <button
                   className={`w-full py-2 rounded-lg font-semibold mb-8 transition-opacity hover:opacity-90 ${
@@ -263,7 +326,10 @@ export default function Index() {
                 </button>
                 <ul className="space-y-3">
                   {plan.features.map((feature, fIndex) => (
-                    <li key={fIndex} className={`flex items-start gap-2 text-sm ${plan.featured ? "text-accent-foreground" : "text-foreground"}`}>
+                    <li
+                      key={fIndex}
+                      className={`flex items-start gap-2 text-sm ${plan.featured ? "text-accent-foreground" : "text-foreground"}`}
+                    >
                       <span className="text-lg">✓</span>
                       <span>{feature}</span>
                     </li>
@@ -275,7 +341,10 @@ export default function Index() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="mx-auto max-w-6xl px-4 md:px-8 py-12 md:py-16">
+        <section
+          id="faq"
+          className="mx-auto max-w-6xl px-4 md:px-8 py-12 md:py-16"
+        >
           <div className="max-w-3xl mx-auto mb-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
               Часто задаваемые вопросы
@@ -286,12 +355,19 @@ export default function Index() {
           </div>
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="border border-border rounded-lg overflow-hidden bg-card">
+              <div
+                key={index}
+                className="border border-border rounded-lg overflow-hidden bg-card"
+              >
                 <button
-                  onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                  onClick={() =>
+                    setExpandedFaq(expandedFaq === index ? null : index)
+                  }
                   className="w-full flex items-center justify-between p-6 text-left hover:bg-secondary transition-colors"
                 >
-                  <span className="font-semibold text-foreground">{faq.question}</span>
+                  <span className="font-semibold text-foreground">
+                    {faq.question}
+                  </span>
                   <ChevronDown
                     className={`w-5 h-5 text-accent transition-transform duration-300 flex-shrink-0 ${
                       expandedFaq === index ? "transform rotate-180" : ""
@@ -311,7 +387,6 @@ export default function Index() {
             ))}
           </div>
         </section>
-
       </main>
 
       <Footer />

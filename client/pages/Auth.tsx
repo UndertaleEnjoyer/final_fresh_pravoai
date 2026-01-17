@@ -12,9 +12,15 @@ export default function Auth() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isLogin) {
-      localStorage.setItem("user", JSON.stringify({ email, isAuthenticated: true }));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ email, isAuthenticated: true }),
+      );
     } else {
-      localStorage.setItem("user", JSON.stringify({ email, name, isAuthenticated: true }));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ email, name, isAuthenticated: true }),
+      );
     }
     navigate("/chat");
   };
@@ -114,7 +120,8 @@ export default function Auth() {
           </div>
 
           <p className="text-center text-xs text-muted-foreground mt-6">
-            Используя LegalAI, вы соглашаетесь с нашей политикой конфиденциальности и условиями.
+            Используя LegalAI, вы соглашаетесь с нашей политикой
+            конфиденциальности и условиями.
           </p>
         </div>
       </div>

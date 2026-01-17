@@ -47,7 +47,9 @@ export const ChatSidebar = ({
       <div className="flex-1 overflow-y-auto p-4">
         {chatSessions.length > 0 && (
           <>
-            <h3 className="text-xs font-semibold text-muted-foreground uppercase mb-3">История</h3>
+            <h3 className="text-xs font-semibold text-muted-foreground uppercase mb-3">
+              История
+            </h3>
             <div className="space-y-2">
               {chatSessions.map((chat) => (
                 <button

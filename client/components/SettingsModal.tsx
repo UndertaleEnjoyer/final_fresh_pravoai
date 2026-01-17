@@ -7,7 +7,9 @@ interface SettingsModalProps {
 }
 
 export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
-  const [activeTab, setActiveTab] = useState<"appearance" | "account" | "plan">("appearance");
+  const [activeTab, setActiveTab] = useState<"appearance" | "account" | "plan">(
+    "appearance",
+  );
   const [theme, setTheme] = useState<"light" | "dark" | "auto">("dark");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -69,10 +71,15 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           {activeTab === "appearance" && (
             <div className="space-y-4">
               <div>
-                <h3 className="text-sm font-semibold text-foreground mb-3">Тема</h3>
+                <h3 className="text-sm font-semibold text-foreground mb-3">
+                  Тема
+                </h3>
                 <div className="space-y-2">
                   {(["light", "dark", "auto"] as const).map((t) => (
-                    <label key={t} className="flex items-center gap-3 p-3 rounded-lg border border-border cursor-pointer hover:bg-secondary transition-colors">
+                    <label
+                      key={t}
+                      className="flex items-center gap-3 p-3 rounded-lg border border-border cursor-pointer hover:bg-secondary transition-colors"
+                    >
                       <input
                         type="radio"
                         name="theme"
@@ -85,7 +92,11 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
                         {t === "light" && <Sun className="w-4 h-4" />}
                         {t === "dark" && <Moon className="w-4 h-4" />}
                         <span className="text-sm text-foreground capitalize">
-                          {t === "light" ? "Светлая" : t === "dark" ? "Тёмная" : "Автоматически"}
+                          {t === "light"
+                            ? "Светлая"
+                            : t === "dark"
+                              ? "Тёмная"
+                              : "Автоматически"}
                         </span>
                       </div>
                     </label>
@@ -144,12 +155,20 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           {activeTab === "plan" && (
             <div className="space-y-4">
               <div className="p-4 rounded-lg bg-secondary border border-border">
-                <p className="text-sm text-muted-foreground mb-1">Текущий план</p>
-                <p className="text-lg font-bold text-foreground">Профессиональный</p>
-                <p className="text-sm text-muted-foreground mt-2">₽2990/месяц</p>
+                <p className="text-sm text-muted-foreground mb-1">
+                  Текущий план
+                </p>
+                <p className="text-lg font-bold text-foreground">
+                  Профессиональный
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  ₽2990/месяц
+                </p>
               </div>
               <div className="space-y-2">
-                <p className="text-sm font-semibold text-foreground">Включено:</p>
+                <p className="text-sm font-semibold text-foreground">
+                  Включено:
+                </p>
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   <li>✓ Неограниченные консультации</li>
                   <li>✓ Продвинутый анализ документов</li>
