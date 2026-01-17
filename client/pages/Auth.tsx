@@ -31,7 +31,7 @@ export default function Auth() {
         <div className="mx-auto max-w-6xl px-4 md:px-8 h-16 flex items-center">
           <Link to="/" className="flex items-center gap-2 font-bold text-lg">
             <Scale className="w-6 h-6 text-accent" />
-            <span className="text-foreground">LegalAI</span>
+            <span className="text-foreground">PravoAI</span>
           </Link>
         </div>
       </header>
@@ -40,7 +40,7 @@ export default function Auth() {
         <div className="w-full max-w-md">
           <div className="bg-card rounded-lg border border-border p-8 shadow-sm">
             <h1 className="text-2xl font-bold text-foreground mb-2">
-              {isLogin ? "Войти в LegalAI" : "Создать аккаунт"}
+              {isLogin ? "Войти в PravoAI" : "Создать аккаунт"}
             </h1>
             <p className="text-sm text-muted-foreground mb-8">
               {isLogin
