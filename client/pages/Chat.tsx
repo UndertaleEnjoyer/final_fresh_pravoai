@@ -75,11 +75,22 @@ export default function Chat() {
 
   return (
     <div className="flex h-screen bg-background">
-      {/* Sidebar */}
-      <ChatSidebar onNewChat={handleNewChat} onLogout={handleLogout} />
+      {/* Sidebar - Desktop */}
+      <div className="hidden md:block">
+        <ChatSidebar onNewChat={handleNewChat} onLogout={handleLogout} />
+      </div>
+
+      {/* Sidebar - Mobile */}
+      {showSidebar && (
+        <div className="fixed inset-0 z-40 bg-black/50 md:hidden" onClick={() => setShowSidebar(false)}>
+          <div onClick={(e) => e.stopPropagation()}>
+            <ChatSidebar onNewChat={handleNewChat} onLogout={handleLogout} />
+          </div>
+        </div>
+      )}
 
       {/* Main Chat Area */}
-      <div className="flex-1 ml-64 flex flex-col">
+      <div className="flex-1 md:ml-64 flex flex-col">
         {/* Chat Messages */}
         <div className="flex-1 overflow-y-auto">
           <div className="mx-auto max-w-3xl px-4 md:px-8 py-8 space-y-4">
