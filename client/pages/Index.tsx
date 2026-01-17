@@ -275,16 +275,16 @@ export default function Index() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="container py-20 md:py-32">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <section id="faq" className="container py-12 md:py-16">
+          <div className="max-w-3xl mx-auto mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
               Часто задаваемые вопросы
             </h2>
             <p className="text-lg text-muted-foreground">
               Всё, что вам нужно знать о LegalAI
             </p>
           </div>
-          <div className="max-w-2xl space-y-4">
+          <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border border-border rounded-lg overflow-hidden bg-card">
                 <button
