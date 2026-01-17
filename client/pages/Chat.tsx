@@ -6,6 +6,7 @@ import { ChatSidebar } from "@/components/ChatSidebar";
 export default function Chat() {
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([
     {
       role: "assistant",
