@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Send } from "lucide-react";
+import { Send, Menu, X } from "lucide-react";
 import { ChatSidebar } from "@/components/ChatSidebar";
 
 export default function Chat() {
