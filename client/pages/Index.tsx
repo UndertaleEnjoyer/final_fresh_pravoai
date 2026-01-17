@@ -112,13 +112,14 @@ export default function Index() {
       ],
     },
   ];
+  
 
   const faqs = [
     {
       question:
         "Может ли совет ИИ быть таким же хорошим, как у реального адвоката?",
       answer:
-        "LegalAI предоставляет быструю и точную информацию для большинства вопросов. Однако для критических решений рекомендуется проконсультироваться с квалифицированным адвокатом.",
+        "PravoAI предоставляет быструю и точную информацию для большинства вопросов. Однако для критических решений рекомендуется проконсультироваться с квалифицированным адвокатом.",
     },
     {
       question: "Как защищены мои данные?",
@@ -128,7 +129,7 @@ export default function Index() {
     {
       question: "Какие юрисдикции охватываются?",
       answer:
-        "LegalAI охватывает правовые системы более 100 стран, включая России, США, ЕС и другие основные юрисдикции.",
+        "PravoAI охватывает правовые системы более 100 стран, включая России, США, ЕС и другие основные юрисдикции.",
     },
     {
       question: "Могу ли я скачать мои консультации?",
@@ -143,7 +144,7 @@ export default function Index() {
     {
       question: "Могу ли я интегрировать это с моими системами?",
       answer:
-        "Да, наш API позволяет легко интегрировать LegalAI с вашими системами управления или рабочими процессами.",
+        "Да, наш API позволяет легко интегрировать PravoAI с вашими системами управления или рабочими процессами.",
     },
   ];
 
@@ -158,21 +159,18 @@ export default function Index() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
               Профессиональная юридическая консультация, работающая на ИИ
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 mt-14 leading-relaxed">
               Получайте мгновенную и точную юридическую консультацию для любой
               ситуации. Доступно 24/7, безопасно и надежно для тысяч
               профессионалов по всему миру.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mt-20">
               <Link
                 to="/auth"
                 className="px-8 py-3 rounded-lg bg-accent text-accent-foreground font-semibold hover:opacity-90 transition-opacity text-center"
               >
                 Начните бесплатную консультацию
               </Link>
-              <button className="px-8 py-3 rounded-lg border border-border text-foreground font-semibold hover:bg-secondary transition-colors text-center">
-                Смотреть демо (2 мин)
-              </button>
             </div>
           </div>
         </section>
@@ -285,7 +283,7 @@ export default function Index() {
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`rounded-lg border p-8 ${
+                className={`rounded-lg border p-8 flex flex-col ${
                   plan.featured
                     ? "bg-accent text-accent-foreground border-accent"
                     : "bg-card text-card-foreground border-border"
@@ -324,7 +322,7 @@ export default function Index() {
                 >
                   {plan.cta}
                 </button>
-                <ul className="space-y-3">
+                <ul className="space-y-3 flex-1">
                   {plan.features.map((feature, fIndex) => (
                     <li
                       key={fIndex}
@@ -350,7 +348,7 @@ export default function Index() {
               Часто задаваемые вопросы
             </h2>
             <p className="text-lg text-muted-foreground">
-              Всё, что вам нужно знать о LegalAI
+              Всё, что вам нужно знать о PravoAI
             </p>
           </div>
           <div className="max-w-3xl mx-auto space-y-4">

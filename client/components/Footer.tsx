@@ -9,7 +9,7 @@ export const Footer = () => {
           <div>
             <div className="flex items-center gap-2 font-bold text-lg mb-4">
               <Scale className="w-5 h-5 text-accent" />
-              <span>LegalAI</span>
+              <span>PravoAI</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Профессиональная платформа для юридических консультаций на основе
@@ -125,7 +125,7 @@ export const Footer = () => {
 
         <div className="border-t border-border pt-6">
           <p className="text-xs text-muted-foreground text-center">
-            © 2025 LegalAI. Все права защищены.
+            © 2026 PravoAI. Все права защищены.
           </p>
         </div>
       </div>

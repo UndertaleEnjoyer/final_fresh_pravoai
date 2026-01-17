@@ -7,7 +7,7 @@ export const Header = () => {
       <div className="mx-auto max-w-6xl px-4 md:px-8 flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-bold text-lg">
           <Scale className="w-6 h-6 text-accent" />
-          <span className="text-foreground">LegalAI</span>
+          <span className="text-foreground">PravoAI</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

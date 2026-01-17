@@ -27,22 +27,15 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <header className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 md:px-8 h-16 flex items-center">
-          <Link to="/" className="flex items-center gap-2 font-bold text-lg">
-            <Scale className="w-6 h-6 text-accent" />
-            <span className="text-foreground">PravoAI</span>
-          </Link>
-        </div>
-      </header>
+
 
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <div className="bg-card rounded-lg border border-border p-8 shadow-sm">
-            <h1 className="text-2xl font-bold text-foreground mb-2 flex items-center justify-center">
-              {isLogin ? "Войти в PravoAI" : "Создать аккаунт"}
+            <h1 className="text-2xl font-bold text-foreground mb-2 text-center">
+              {isLogin ? "Войти" : "Создать аккаунт"}
             </h1>
-            <p className="text-sm text-muted-foreground mb-8 flex items-center justify-center">
+            <p className="text-sm text-muted-foreground mb-8 text-center">
               {isLogin
                 ? "Введите ваши учетные данные для доступа"
                 : "Создайте учетную запись для начала работы"}
@@ -87,7 +80,7 @@ export default function Auth() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
+                  placeholder="Введите пароль"
                   className="w-full px-4 py-2 rounded-lg border border-border bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                   required
                 />
