@@ -39,10 +39,10 @@ export default function Auth() {
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <div className="bg-card rounded-lg border border-border p-8 shadow-sm">
-            <h1 className="text-2xl font-bold text-foreground mb-2">
+            <h1 className="text-2xl font-bold text-foreground mb-2 flex items-center justify-center">
               {isLogin ? "Войти в PravoAI" : "Создать аккаунт"}
             </h1>
-            <p className="text-sm text-muted-foreground mb-8">
+            <p className="text-sm text-muted-foreground mb-8 flex items-center justify-center">
               {isLogin
                 ? "Введите ваши учетные данные для доступа"
                 : "Создайте учетную запись для начала работы"}
