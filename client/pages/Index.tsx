@@ -152,7 +152,7 @@ export default function Index() {
         </section>
 
         {/* Stats Section */}
-        <section className="container py-10 md:py-12">
+        <section className="mx-auto max-w-6xl px-4 md:px-8 py-10 md:py-12">
           <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
               <p className="text-4xl md:text-5xl font-bold text-accent mb-2">50K+</p>
