@@ -31,12 +31,8 @@ export default function Chat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-  const [streamingText, setStreamingText] = useState<string>("");
-  const [isStreaming, setIsStreaming] = useState(false);
-  const [currentStreamingResponse, setCurrentStreamingResponse] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
-  const streamingTimerRef = useRef<NodeJS.Timeout | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Константа для скорости печати (можно менять в коде)
