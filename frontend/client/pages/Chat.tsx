@@ -109,13 +109,11 @@ export default function Chat() {
   }, [chatSessions]);
 
   useEffect(() => {
-    // For testing, allow access without authentication
-    // In production, uncomment the auth check below
-    // if (!isAuthenticated()) {
-    //   navigate("/auth");
-    //   return;
-    // }
-    setUser(authUser || { email: "test@example.com", isAuthenticated: true });
+    if (!isAuthenticated()) {
+      navigate("/auth");
+      return;
+    }
+    setUser(authUser);
 
     // Не создаем чат автоматически - только когда пользователь напишет первое сообщение
     if (chatSessions.length === 0) {
