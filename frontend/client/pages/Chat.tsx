@@ -220,8 +220,8 @@ export default function Chat() {
   };
 
   const handleChatSelect = (chatId: string) => {
-    // Не позволяем переключать чаты во время генерации
-    if (isStreaming) return;
+    // Не позволяем переключать чаты во время загрузки
+    if (loading) return;
     
     setCurrentChatId(chatId);
     setIsNewChatActive(false);
