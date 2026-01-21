@@ -237,7 +237,7 @@ export default function Chat() {
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || loading || isStreaming) return;
+    if (!input.trim() || loading) return;
 
     const userMessage = input;
     let targetChatId = currentChatId;
