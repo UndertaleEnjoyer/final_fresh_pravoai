@@ -175,8 +175,8 @@ export default function Chat() {
   };
 
   const handleDeleteChat = async (chatId: string) => {
-    // Не позволяем удалять чат во время генерации
-    if (isStreaming) return;
+    // Не позволяем удалять чат во время загрузки
+    if (loading) return;
     
     setChatSessions((prev) => {
       const newChats = prev.filter((chat) => chat.id !== chatId);
