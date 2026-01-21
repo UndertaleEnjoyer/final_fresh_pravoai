@@ -343,16 +343,94 @@ export default function Chat() {
     setLoading(true);
     setShouldAutoScroll(true); // Включаем автопрокрутку при отправке сообщения
 
-    // Симуляция подготовки ответа AI
-    setTimeout(() => {
-      setLoading(false);
-      
-      // Выбираем случайный ответ
-      const response = responses[Math.floor(Math.random() * responses.length)];
-      setCurrentStreamingResponse(response);
-      setStreamingText(""); // Начинаем с пустой строки
-      setIsStreaming(true);
-    }, 600);
+    // Send request to backend API
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: userMessage,
+        user_id: authUser?.id || '',
+      }),
+    })
+      .then(async (res) => {
+        if (!res.ok) {
+          throw new Error(`API error: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setLoading(false);
+
+        if (data.error) {
+          // Show error message in chat
+          setChatSessions((prev) =>
+            prev.map((chat) => {
+              if (chat.id === targetChatId) {
+                return {
+                  ...chat,
+                  messages: [
+                    ...chat.messages,
+                    {
+                      role: "assistant" as const,
+                      content: `Ошибка: ${data.error}`,
+                    },
+                  ],
+                };
+              }
+              return chat;
+            })
+          );
+        } else {
+          // Add the response directly to messages (no streaming)
+          setChatSessions((prev) =>
+            prev.map((chat) => {
+              if (chat.id === targetChatId) {
+                return {
+                  ...chat,
+                  messages: [
+                    ...chat.messages,
+                    {
+                      role: "assistant" as const,
+                      content: data.response,
+                    },
+                  ],
+                };
+              }
+              return chat;
+            })
+          );
+        }
+
+        // Reset textarea height
+        resetTextareaHeight();
+      })
+      .catch((error) => {
+        console.error('Chat error:', error);
+        setLoading(false);
+
+        // Show error message to user
+        setChatSessions((prev) =>
+          prev.map((chat) => {
+            if (chat.id === targetChatId) {
+              return {
+                ...chat,
+                messages: [
+                  ...chat.messages,
+                  {
+                    role: "assistant" as const,
+                    content: `Произошла ошибка при обработке вашего запроса: ${error.message}`,
+                  },
+                ],
+              };
+            }
+            return chat;
+          })
+        );
+
+        resetTextareaHeight();
+      });
   };
 
   if (!user) {
