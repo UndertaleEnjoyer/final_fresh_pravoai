@@ -528,7 +528,7 @@ export default function Chat() {
                   value={input}
                   onChange={(e) => {
                     setInput(e.target.value);
-                    
+
                     // Автоматическое изменение высоты
                     const target = e.target as HTMLTextAreaElement;
                     target.style.height = 'auto';
@@ -537,7 +537,7 @@ export default function Chat() {
                   }}
                   placeholder="Жду Ваш вопрос..."
                   className="flex-1 px-5 py-3.5 rounded-2xl border-0 bg-secondary text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent text-base resize-none min-h-[56px] max-h-[200px] leading-relaxed chat-textarea"
-                  disabled={loading || isStreaming}
+                  disabled={loading}
                   autoFocus
                   rows={1}
                   style={{
@@ -553,24 +553,13 @@ export default function Chat() {
                     }
                   }}
                 />
-                {isStreaming ? (
-                  <button
-                    type="button"
-                    onClick={handleStopGeneration}
-                    className="px-5 py-3.5 rounded-full bg-accent text-accent-foreground transition-colors flex items-center justify-center gap-2 text-base self-end h-[56px]"
-                    title="Остановить генерацию"
-                  >
-                    <Square className="w-5 h-5 fill-white" style={{ borderRadius: '3px' }} />
-                  </button>
-                ) : (
-                  <button
-                    type="submit"
-                    disabled={loading || isStreaming || !input.trim()}
-                    className="px-5 py-3.5 rounded-full bg-accent text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base self-end h-[56px]"
-                  >
-                    <Send className="w-5 h-5" />
-                  </button>
-                )}
+                <button
+                  type="submit"
+                  disabled={loading || !input.trim()}
+                  className="px-5 py-3.5 rounded-full bg-accent text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base self-end h-[56px]"
+                >
+                  <Send className="w-5 h-5" />
+                </button>
               </div>
               <p className="text-xs text-muted-foreground text-center pt-2">
                 PravoAI может делать ошибки. Для важных решений проконсультируйтесь с адвокатом.
