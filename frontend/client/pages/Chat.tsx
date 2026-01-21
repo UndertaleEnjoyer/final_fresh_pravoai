@@ -156,41 +156,6 @@ export default function Chat() {
     }
   };
 
-  const finishStreaming = () => {
-    setIsStreaming(false);
-    if (currentChatId && streamingText) {
-      setChatSessions(prev =>
-        prev.map(chat => {
-          if (chat.id === currentChatId) {
-            return {
-              ...chat,
-              messages: [
-                ...chat.messages,
-                { role: "assistant" as const, content: streamingText },
-              ],
-            };
-          }
-          return chat;
-        })
-      );
-    }
-    setStreamingText("");
-    setCurrentStreamingResponse("");
-    
-    // Сбрасываем высоту textarea после завершения генерации
-    resetTextareaHeight();
-    
-    if (streamingTimerRef.current) {
-      clearTimeout(streamingTimerRef.current);
-      streamingTimerRef.current = null;
-    }
-  };
-
-  const handleStopGeneration = () => {
-    if (isStreaming) {
-      finishStreaming();
-    }
-  };
 
   const toggleSidebarCollapse = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
