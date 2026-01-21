@@ -35,9 +35,6 @@ export default function Chat() {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Константа для скорости печати (можно менять в коде)
-  const TYPING_SPEED = 10; // в ms
-
   // Для управления новым чатом
   const [isNewChatActive, setIsNewChatActive] = useState(false);
 
