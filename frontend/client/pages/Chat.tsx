@@ -204,8 +204,8 @@ export default function Chat() {
   };
 
   const handleNewChat = () => {
-    // Не позволяем создавать новый чат во время генерации
-    if (isStreaming) return;
+    // Не позволяем создавать новый чат во время загрузки
+    if (loading) return;
     
     // Просто активируем режим нового чата, но не создаем его
     setCurrentChatId(null);
