@@ -6,6 +6,7 @@ require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/lib/pq v1.10.9
 	golang.org/x/crypto v0.23.0
+	github.com/openai/openai-go v0.1.0-alpha.49
 )
 
 require (
