@@ -130,7 +130,7 @@ export default function Chat() {
     if (shouldAutoScroll && messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [chatSessions, currentChatId, streamingText, shouldAutoScroll]);
+  }, [chatSessions, currentChatId, shouldAutoScroll]);
 
   // Обработчик прокрутки для отключения автопрокрутки
   useEffect(() => {
