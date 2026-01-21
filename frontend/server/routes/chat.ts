@@ -1,89 +1,59 @@
-import { RequestHandler } from "express";
+import { Request, Response } from "express";
+import OpenAI from "openai";
+import { SYSTEM_PROMPT } from "../systemPrompt";
+import { getSession, initSession, saveSession } from "../chatStore";
+import { ChatMessage } from "../types/chat";
 
-interface ChatRequest {
-  message: string;
-  user_id?: string;
-}
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
-interface ChatResponse {
-  response?: string;
-  error?: string;
-}
-
-export const handleChat: RequestHandler = async (req, res) => {
-  const { message, user_id } = req.body as ChatRequest;
-
-  if (!message || typeof message !== "string") {
-    return res.status(400).json({ error: "Message is required" });
-  }
-
+export const handleChat = async (req: Request, res: Response) => {
   try {
-    // Get OpenAI API key from environment
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      console.error("OPENAI_API_KEY environment variable is not set");
-      return res.status(500).json({
-        error: "OpenAI API key is not configured",
-      });
+    const { message, sessionId } = req.body;
+
+    if (!message || typeof message !== "string") {
+      return res.status(400).json({ error: "Invalid message" });
     }
 
-    // Create system prompt for legal advisor context
-    const systemPrompt = `Ты - опытный русский юридический консультант, специализирующийся на российском законодательстве. 
-Твоя задача помогать людям с правовыми вопросами на основе Гражданского кодекса РФ и других применимых законов.
+    const effectiveSessionId =
+      typeof sessionId === "string" ? sessionId : "default";
 
-При ответе:
-1. Будь точным и основывайся на действующем законодательстве
-2. Используй примеры из судебной практики когда уместно
-3. Указывай на необходимость обращения к профессиональному юристу при необходимости
-4. Структурируй ответы понятным образом
-5. Если вопрос вне твоей компетенции, скажи об этом честно`;
+    let history: ChatMessage[] = getSession(effectiveSessionId);
 
-    // Call OpenAI API
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: message },
-        ],
-        max_tokens: 2048,
-        temperature: 0.7,
-      }),
+    if (history.length === 0) {
+      history = initSession(effectiveSessionId, SYSTEM_PROMPT);
+    }
+
+    history.push({ role: "user", content: message });
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: history,
+      temperature: 0.3,
+      max_tokens: 900,
     });
 
-    if (!response.ok) {
-      const error = await response.json();
-      console.error("OpenAI API error:", error);
-      return res.status(response.status).json({
-        error: `OpenAI API error: ${error.error?.message || "Unknown error"}`,
-      });
+    const assistantContent = completion.choices[0]?.message?.content?.trim();
+
+    if (!assistantContent) {
+      throw new Error("Empty response from OpenAI");
     }
 
-    const data = await response.json();
+    history.push({
+      role: "assistant",
+      content: assistantContent,
+    });
 
-    if (!data.choices || data.choices.length === 0) {
-      return res.status(500).json({
-        error: "No response from OpenAI",
-      });
-    }
+    saveSession(effectiveSessionId, history);
 
-    const responseText = data.choices[0].message.content;
-    const responsePayload: ChatResponse = {
-      response: responseText,
-    };
-
-    res.json(responsePayload);
-  } catch (error) {
-    console.error("Chat route error:", error);
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
-    res.status(500).json({
-      error: `Server error: ${errorMessage}`,
+    return res.json({
+      response: assistantContent,
+    });
+  } catch (err) {
+    console.error("GPT chat error:", err);
+    return res.status(500).json({
+      error: "Failed to generate response",
     });
   }
 };
