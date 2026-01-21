@@ -150,28 +150,6 @@ export default function Chat() {
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Эффект для потоковой генерации текста
-  useEffect(() => {
-    if (isStreaming && currentStreamingResponse && streamingText.length < currentStreamingResponse.length) {
-      if (streamingTimerRef.current) {
-        clearTimeout(streamingTimerRef.current);
-      }
-      
-      streamingTimerRef.current = setTimeout(() => {
-        const nextChar = currentStreamingResponse[streamingText.length];
-        setStreamingText(prev => prev + nextChar);
-      }, TYPING_SPEED); // Используем константу скорости
-
-      return () => {
-        if (streamingTimerRef.current) {
-          clearTimeout(streamingTimerRef.current);
-        }
-      };
-    } else if (isStreaming && streamingText.length === currentStreamingResponse.length) {
-      // Завершаем стриминг и сохраняем сообщение
-      finishStreaming();
-    }
-  }, [isStreaming, streamingText, currentStreamingResponse, currentChatId]);
 
   // Функция для сброса высоты textarea
   const resetTextareaHeight = () => {
