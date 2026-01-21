@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Send, Menu, X, Square } from "lucide-react";
+import { Send, Menu, X } from "lucide-react";
 import { ChatSidebar } from "@/components/ChatSidebar";
 import { SettingsModal } from "@/components/SettingsModal";
 import { useAuth } from "@/hooks/use-auth";
