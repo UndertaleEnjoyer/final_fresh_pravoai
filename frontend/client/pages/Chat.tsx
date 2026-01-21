@@ -495,18 +495,6 @@ export default function Chat() {
               </div>
             ))}
             
-            {/* Потоковый ответ AI */}
-            {isStreaming && (
-              <div className="flex justify-start">
-                <div className="px-4 py-3 rounded-2xl max-w-4xl">
-                  <p className="text-base whitespace-pre-wrap leading-relaxed">
-                    {streamingText}
-                    <span className="inline-block w-2 h-4 ml-1 bg-foreground animate-pulse"></span>
-                  </p>
-                </div>
-              </div>
-            )}
-            
             {loading && (
               <div className="flex justify-start">
                 <div className="px-4 py-3 rounded-2xl">
