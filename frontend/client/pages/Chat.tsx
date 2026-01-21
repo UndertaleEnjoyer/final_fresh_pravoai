@@ -375,7 +375,7 @@ export default function Chat() {
 
   const currentChat = getCurrentChat();
   const messages = currentChat?.messages || [];
-  const showWelcomeMessage = (!currentChatId || isNewChatActive) && messages.length === 0 && !isStreaming && !loading;
+  const showWelcomeMessage = (!currentChatId || isNewChatActive) && messages.length === 0 && !loading;
 
   return (
     <div className="flex h-screen bg-background">
