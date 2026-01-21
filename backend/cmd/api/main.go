@@ -41,9 +41,15 @@ func main() {
 	if jwtSecret == "" {
 		jwtSecret = "super-secret-key-change-this-in-production"
 	}
+
+	openaiKey := os.Getenv("OPENAI_API_KEY")
+	if openaiKey == "" {
+		log.Fatal("OPENAI_API_KEY environment variable is required")
+	}
+
 	dbURL := getDatabaseURL()
 	log.Printf("Connecting to database: %s", dbURL)
-	
+
 	db, err := sql.Open("postgres", dbURL)
 	if err != nil {
 		log.Fatal("Failed to open database:", err)
@@ -52,16 +58,26 @@ func main() {
 		log.Fatal("Failed to connect to database:", err)
 	}
 	log.Println("Successfully connected to database")
+
+	// Initialize auth handler
 	repo := auth.NewRepository(db)
 	tokenManager := jwt.NewTokenManager(jwtSecret)
-	handler := auth.NewHandler(repo, tokenManager)
+	authHandler := auth.NewHandler(repo, tokenManager)
+
+	// Initialize chat service and handler
+	chatService := chat.NewService(openaiKey)
+	chatHandler := chat.NewHandler(chatService)
+
 	r := gin.Default()
 	r.Use(corsMiddleware())
-	
-	// Регистрируем маршруты
-	r.POST("/register", handler.Register)
-	r.POST("/login", handler.Login)
-	
+
+	// Auth routes
+	r.POST("/register", authHandler.Register)
+	r.POST("/login", authHandler.Login)
+
+	// Chat routes
+	r.POST("/api/chat", chatHandler.Chat)
+
 	// Health check
 	r.GET("/health", func(c *gin.Context) {
 		if err := db.Ping(); err != nil {
