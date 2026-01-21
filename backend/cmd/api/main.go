@@ -9,6 +9,7 @@ import (
 	_ "github.com/lib/pq"
 
 	"pravoai/backend/internal/modules/auth"
+	"pravoai/backend/internal/modules/chat"
 	"pravoai/backend/internal/pkg/jwt"
 )
 
